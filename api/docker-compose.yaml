@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   nest:
     build:
@@ -6,16 +7,34 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    network_mode: host
+
+    # networks:
+    #   - my-network
     volumes:
-      - /home/josesantos/bycoders/api/src
+      - ./src:/app/src
     depends_on:
       - db
       - rabbitmq
+
   db:
     image: postgres
+    network_mode: host
+
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: dbname
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bycoders
+    # networks:
+    #   - my-network
+
   rabbitmq:
     image: rabbitmq
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

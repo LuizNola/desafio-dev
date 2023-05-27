@@ -7,10 +7,10 @@
 /yarn.lock
 
 # Arquivo de lock do pnpm
-/pnpm-lock.yaml
+/api/pnpm-lock.yaml
 
 # Diretório de build
-/dist
+/api/dist
 
 # Variáveis de ambiente
 /api/.env
@@ -22,8 +22,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Diretório de cobertura de testes
-/coverage
+/api/coverage
 
 # Arquivos de configuração de IDEs ou editores específicos
-.idea
-.vscode
+/api/.idea
+/api/.vscode
