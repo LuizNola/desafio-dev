@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TransactionsModule } from './modules/transactions/transactions.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { DataImportModule } from './modules/data-import/data-import.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: true,
     } as TypeOrmModuleOptions),
     TransactionsModule,
+    DataImportModule,
   ],
   controllers: [AppController],
   providers: [AppService],

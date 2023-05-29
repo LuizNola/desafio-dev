@@ -1,0 +1,100 @@
+.container-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-data-import {
+  width: 80%;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.data-import-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.data-import-table th,
+.data-import-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination span {
+  font-size: 14px;
+}
+
+.pagination ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.pagination li {
+  cursor: pointer;
+  padding: 6px 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
+
+.pagination li:hover {
+  background-color: #eaeaea;
+}
+
+.pagination .active {
+  background-color: #ccc;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.modal-content input[type="file"] {
+  margin-bottom: 10px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.modal-content button:hover {
+  background-color: #0069d9;
+}

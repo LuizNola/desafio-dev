@@ -1,0 +1,76 @@
+/* Estilos do menu lateral */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #f1f1f1;
+    transition: width 0.3s ease;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .sidebar.closed {
+    width: 60px;
+  }
+
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-item:hover {
+    background-color: #ccc;
+  }
+  
+  .menu-item .icon {
+    margin-right: 8px;
+  }
+  
+  .menu-item .text {
+    display: inline;
+  }
+
+  .container {
+    display: flex;
+  }
+  .menu-item.active {
+    background-color: #ddd;
+  }
+  .close-button {
+    transition: all ease .2s;
+    margin-left: 15rem;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 5px;
+  }
+  .close-button.closeo {
+    margin-left: 60px
+  }
+  
+  /* Estilos para dispositivos móveis */
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+  
+    .sidebar.closed {
+      width: 100%;
+    }
+  
+    .menu-toggle {
+      display: block;
+      padding: 16px;
+      color: #333;
+      text-decoration: none;
+    }
+  }
+  
