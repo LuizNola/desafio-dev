@@ -49,6 +49,18 @@ export class TransactionsService {
     };
   }
 
+  async findAllByName(shopName: string) {
+    const transactions = await this.transactionRepository.find({
+      where: { shopName },
+    });
+
+    if (transactions.length > 0) {
+      return transactions;
+    }
+
+    throw new NotFoundException('Loja nao encontrada!!');
+  }
+
   async findOne(options: FindOneOptions<Transaction>) {
     try {
       return await this.transactionRepository.findOneOrFail(options);

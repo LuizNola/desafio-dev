@@ -115,7 +115,6 @@ export const DataImport: React.FC = () => {
 
   const updateTable = () => {
     fetchDataImports();
-
   }
 
   return (

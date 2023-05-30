@@ -61,6 +61,10 @@ export class TransactionsController {
     return this.transactionsService.findOne({ where: { id } });
   }
 
+  @Get(':name')
+  async findOneByName(@Param('name') name: string) {
+    return this.transactionsService.findOne({ where: { shopName: name } });
+  }
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return this.transactionsService.remove(id);
