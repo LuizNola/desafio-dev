@@ -3,8 +3,18 @@ import "./style.css"
 import { Link } from "react-router-dom";
 
 export const SideBarMenu = ({children}: {children?: React.ReactNode}) => {
+
+
+  const extractPath = () => {
+    const url = window.location.href
+    const path= url.split("/").slice(3).join("/");
+    console.log("/" + path)
+    return path;
+  };
+
+
     const [isMenuOpen, setIsMenuOpen] = useState(true);
-    const [activeLink, setActiveLink] = useState("item1");
+    const [activeLink, setActiveLink] = useState(extractPath);
 
     const handleLinkClick = (link: string) => {
         setActiveLink(link);
@@ -20,24 +30,24 @@ export const SideBarMenu = ({children}: {children?: React.ReactNode}) => {
                 <div className={`sidebar ${isMenuOpen ? "" : "closed"}`}>
                 <Link
                     to="/dashboard/transactions"
-                    className={`menu-item ${activeLink === "item1" ? "active" : ""}`}
-                    onClick={() => handleLinkClick("item1")}
+                    className={`menu-item ${activeLink === "/dashboard/transactions" ? "active" : ""}`}
+                    onClick={() => handleLinkClick("/dashboard/transactions")}
                 >
                     <span className="icon">📊</span>
                     {isMenuOpen && <span className="text">Transações</span>}
                 </Link>  
                 <Link
                     to="/dashboard/dataimport"
-                    className={`menu-item ${activeLink === "item2" ? "active" : ""}`}
-                    onClick={() => handleLinkClick("item2")}
+                    className={`menu-item ${activeLink === "/dashboard/dataimport" ? "active" : ""}`}
+                    onClick={() => handleLinkClick("/dashboard/dataimport")}
                 >
                     <span className="icon">📄</span>
                     {isMenuOpen && <span className="text">Planilhas</span>}
                 </Link>
                 <Link
                     to="/dashboard/transactions/byshop"
-                    className={`menu-item ${activeLink === "item3" ? "active" : ""}`}
-                    onClick={() => handleLinkClick("item3")}
+                    className={`menu-item ${activeLink === "/dashboard/transactions/byshop" ? "active" : ""}`}
+                    onClick={() => handleLinkClick("/dashboard/transactions/byshop")}
                 >
                     <span className="icon">🏪</span>
                     {isMenuOpen && <span className="text">Transações por loja</span>}
