@@ -24,7 +24,8 @@
 
 ## Rotas do projeto
 - **POST /transactions**: Cria um objeto do tipo transaction. Exemplo de corpo da requisição:
-\`\`\`json
+```
+
 {
  "type": "debit",
  "value": 145,
@@ -34,6 +35,7 @@
  "shopOwner": "luiz",
  "shopName": "luiz Shop"
 }
+
 \`\`\`
 - **GET /transactions/template**: Gera um arquivo template para ser usado no projeto.
 - **POST /transactions/import**: Aceita um arquivo XLSX para adicionar transações ao banco.
@@ -42,16 +44,16 @@
 - **GET /transactions/byname/:name**: Lista todas as transações por nome.
 - **DELETE /transactions/:id**: Deleta uma transação.
 - **POST /data-import**: Cria um data import. Exemplo de corpo da requisição:
-\`\`\`json
+```
 {
   "status": "load"
 }
-\`\`\`
+```
 - **GET /data-import**: Lista todas as imports.
 - **PATCH /data-import/:id**: Atualiza uma import. Exemplo de corpo da requisição:
-\`\`\`json
+```
 {
   "status": "success",
   "message": "Sucesso"
 }
-\`\`\`
+```
