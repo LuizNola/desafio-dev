@@ -15,7 +15,6 @@ services:
       - ./src:/app/src
     depends_on:
       - db
-      - rabbitmq
 
   db:
     image: postgres
@@ -29,11 +28,6 @@ services:
       POSTGRES_DB: bycoders
     # networks:
     #   - my-network
-
-  rabbitmq:
-    image: rabbitmq
-    networks:
-      - my-network
 
 networks:
   my-network:
