@@ -36,7 +36,7 @@
  "shopName": "luiz Shop"
 }
 
-\`\`\`
+```
 - **GET /transactions/template**: Gera um arquivo template para ser usado no projeto.
 - **POST /transactions/import**: Aceita um arquivo XLSX para adicionar transações ao banco.
 - **GET /transactions**: Lista todas as transações.
