@@ -34,6 +34,14 @@ export const SideBarMenu = ({children}: {children?: React.ReactNode}) => {
                     <span className="icon">📄</span>
                     {isMenuOpen && <span className="text">Planilhas</span>}
                 </Link>
+                <Link
+                    to="/dashboard/transactions/byshop"
+                    className={`menu-item ${activeLink === "item3" ? "active" : ""}`}
+                    onClick={() => handleLinkClick("item3")}
+                >
+                    <span className="icon">🏪</span>
+                    {isMenuOpen && <span className="text">Transações por loja</span>}
+                </Link>
                 </div>
                 <div className={`close-button ${isMenuOpen ? "" : "closeo"}`} onClick={toggleMenu}>
                 {isMenuOpen ? "⬅️" : "➡️"}

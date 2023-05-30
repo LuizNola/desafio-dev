@@ -12,51 +12,69 @@ interface Transaction {
   shopName: string;
 }
 
-export const Transactions: React.FC = () => {
+export const TransactionsByShop: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [transactionsPerPage] = useState(10);
   const [totalCount, setTotalCount] = useState(0);
+  const [shopName, setShopName] = useState("");
 
   const fetchData = async () => {
     setTransactions([]);
+    
+    setTotalCount((old) => 0)
       try {
-        const response = await axios.get("http://localhost:3001/transactions", {
-          params: {
-            take: transactionsPerPage, // Número de registros a serem retornados
-            skip: (currentPage -1) * 10, // Número de registros a serem ignorados
-          },
+        const response = await axios.get("http://localhost:3001/transactions/byname/"+ shopName, {
+  
         });
-        
-        const { data, count } = response.data;
 
+        const { data } = response;
         setTransactions((oldData) => data);
-        setTotalCount(count);
+
+      
       } catch (error) {
         console.error("Erro ao obter as transações:", error);
       }
+
+     
     };
 
 
   useEffect(() => {
     
     fetchData();
-  }, [currentPage, transactionsPerPage]);
+  }, [ shopName]);
 
-  // Função para mudar a página atual
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
+
+  useEffect(() => {
+    let total = 0
+
+    transactions.forEach((transaction) => {
+      const negative = ['ticket', 'financing', 'rent']
+    
+      if(negative.includes(transaction.type)){
+        total =  total - transaction.value
+      }else {
+        total =  total + transaction.value
+      }
+    })
+
+    setTotalCount(old => total)
+  }, [transactions])
 
   const updateTable = () => {
     fetchData();
   }
-
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setShopName(event.target.value);
+  };
   return (
+    
     <div className="container-transaction">
             <button className="add-button" onClick={updateTable }>
       Atualizar tabela
     </button>
+    <div className="search-bar">
+        <input type="text" value={shopName} onChange={handleSearch} placeholder="Buscar por nome da loja" />
+      </div>
       <div className="table-responsive">
         <table className="transaction-table">
           <thead>
@@ -87,14 +105,7 @@ export const Transactions: React.FC = () => {
       </div>
 
       <div className="pagination">
-        <span>Total de transações: {totalCount}</span>
-        <ul>
-          {Array.from({ length: Math.ceil(totalCount / transactionsPerPage) }, (_, index) => (
-            <li key={index} onClick={() => paginate(index + 1)} className={currentPage === index + 1 ? "active" : ""}>
-              {index + 1}
-            </li>
-          ))}
-        </ul>
+        <span>valor total das transações: {totalCount}</span>
       </div>
 
 

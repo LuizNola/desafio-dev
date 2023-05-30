@@ -121,7 +121,6 @@ export class TransactionsService {
     const createdDataImport = await this.dataImportService.create({
       status: StatusType.LOAD,
     });
-    console.log(createdDataImport);
 
     const buffer = file.buffer;
 
